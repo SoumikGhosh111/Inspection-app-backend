@@ -30,7 +30,7 @@ async function fetchAllSites(__, res){
         const result = await ((Site.find()).populate("products_stored.product_id")); 
 
         if(!result){ 
-            return res.status(404).json({message: "No Products Found"}); 
+            return res.status(404).json({message: "No Sites Found"}); 
         }
 
         return res.status(200).json({message: "Saved Sites", data: result}); 
