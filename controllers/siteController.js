@@ -25,6 +25,19 @@ async function createSite(req, res) {
     }
 }
 
+async function fetchAllSites(__, res){ 
+    try{ 
+        const result = await ((Site.find()).populate("products_stored.product_id")); 
 
+        if(!result){ 
+            return res.status(404).json({message: "No Products Found"}); 
+        }
 
-module.exports = {createSite}; 
+        return res.status(200).json({message: "Saved Sites", data: result}); 
+
+    }catch(e){ 
+        return res.status(500).json({message: e.message}); 
+    }
+}
+
+module.exports = {createSite, fetchAllSites}; 
