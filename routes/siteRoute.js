@@ -2,8 +2,9 @@ const express = require("express");
 
 router = express.Router(); 
 
-const {createSite} = require("../controllers/siteController"); 
+const {createSite, fetchAllSites} = require("../controllers/siteController"); 
 
 router.post("/create-site", createSite); 
+router.get("/fetch-all-sites", fetchAllSites); 
 
 module.exports = router; 
